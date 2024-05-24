@@ -1,6 +1,7 @@
 name: Update gist with Steam Playtime
 
 on:
+  workflow_dispatch:
   push:
     branches: 
       - master
