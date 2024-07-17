@@ -1,0 +1,35 @@
+name: Update gist with Steam Playtime
+
+on:
+  workflow_dispatch:
+  push:
+    branches: 
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: "0 * * * *"
+
+
+jobs:
+
+  build:
+    name: Upddate-gist
+    runs-on: ubuntu-latest
+    env:
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+          STEAM_ID: ${{ secrets.STEAM_ID }}
+    steps:
+
+    - name: Set up Go 1.x
+      uses: actions/setup-go@v2
+      with:
+        go-version: ^1.14
+      id: go
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v4
+
+    - name: Update-gist
+      run:  go run ./cmd/box/main.go
