@@ -15,7 +15,8 @@ on:
 jobs:
 
   build:
-    name: Upddate-gist
+    name: Update-gist
+    if: false
     runs-on: ubuntu-latest
     env:
           STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
